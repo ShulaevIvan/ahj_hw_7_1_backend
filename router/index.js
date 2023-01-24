@@ -28,7 +28,7 @@ router.get('/', async(ctx) => {
         try {
             const result = await task.getAllTasks();
             ctx.status = 200;
-            ctx.body =  result;
+            ctx.body = result;
         }
         catch(err) {
             console.log(err);
@@ -59,7 +59,7 @@ router.delete('/', async(ctx) => {
             const id = Number(method.replace('deleteTicketById&id=', ''));
             const result = await task.removeTaskById(id);
             ctx.status = 200;
-            ctx.body = result
+            ctx.body = result;
         }
         catch(err) {
             console.log(err);
@@ -78,7 +78,7 @@ router.patch('/', async(ctx) => {
             const id = Number(method.replace('updateTicketById&id=', ''));
             const result = await task.updateTaskById(id, replaceContent);
             ctx.status = 200;
-            ctx.body = result
+            ctx.body = result;
         }
         catch(err) {
             console.log(err);
