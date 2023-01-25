@@ -56,16 +56,15 @@ exports.removeTaskById = (id) => new Promise(async(resolve, reject) => {
 
 exports.updateTaskById = (id, replaceContent) => new Promise(async(resolve, reject) => {
     try {
-        console.log(replaceContent)
         for (let i = 0; i < data.ticketsFull.length; i++) {
             if (data.ticketsFull[i].id === id) {
-                console.log(data.ticketsFull)
                 data.ticketsFull[i].id = replaceContent.id;
                 data.ticketsFull[i].description = replaceContent.description;
                 data.ticketsFull[i].descriptionFull = replaceContent.descriptionFull;
+                data.ticketsFull[i].status = replaceContent.status;
                 data.tickets[i].id = replaceContent.id;
                 data.tickets[i].description = replaceContent.description;
-                data.tickets[i].descriptionFull = replaceContent.descriptionFull;
+                data.tickets[i].status = replaceContent.status
             }
         }
         const findObj = data.ticketsFull.find((obj) => obj.id == id);
@@ -77,23 +76,22 @@ exports.updateTaskById = (id, replaceContent) => new Promise(async(resolve, reje
     }
 });
 
-// exports.updateTaskById = (id, replaceContent) => new Promise(async(resolve, reject) => {
-//     try {
-//         for (let i = 0; i < data.ticketsFull.length; i++) {
-//             if (data.ticketsFull[i].id === id) {
-//                 console.log(replaceContent)
-//                 data.ticketsFull[i].name = replaceContent.name;
-//                 data.ticketsFull[i].status = replaceContent.status;
-//                 data.ticketsFull[i].description = replaceContent.description;
-//                 data.tickets[i].name = replaceContent.name;
-//                 data.tickets[i].status = replaceContent.status;
-//             }
-//         }
-//         const findObj = data.ticketsFull.find((obj) => obj.id == id);
-//         if (!findObj) reject('not found')
-//         resolve(JSON.stringify(findObj))
-//     }
-//     catch(err) {
-//         reject(err);
-//     }
-// });
+exports.updateStatusTaskById = (id, replaceContent) => new Promise(async(resolve, reject) => {
+    try {
+        console.log('test')
+        for (let i = 0; i < data.ticketsFull.length; i++) {
+            if (data.ticketsFull[i].id === id) {
+                data.ticketsFull[i].id = replaceContent.id;
+                data.ticketsFull[i].status = replaceContent.status;
+                data.tickets[i].id = replaceContent.id;
+                data.tickets[i].status = replaceContent.status
+            }
+        }
+        const findObj = data.ticketsFull.find((obj) => obj.id == id);
+        if (!findObj) reject('not found')
+        resolve(JSON.stringify(findObj))
+    }
+    catch(err) {
+        reject(err);
+    }
+});
